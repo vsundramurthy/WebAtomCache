@@ -37,7 +37,8 @@ This approach will help reduce the date receiving time of a page.
 The waiting time will not improve, since server side operation will happen as before.
 In my experiment 23ms for waiting and 280ms for receiving at 1st round trip.
 After cache was applied, from the 2nd roundtrip onwards it was 23ms for waiting and 20ms receiving.
-More than a 82% of reduction is receiving time. The waiting time will be always same
+More than a 82% of reduction is receiving time (Might vary from page to page).
+The waiting time will be always same
 because, we will do the backend verification for generate dynamic data as before, only the sending
 part is determined using "cid", so you will not see much change in the waiting time.
 
