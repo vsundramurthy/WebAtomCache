@@ -13,7 +13,7 @@ in the localstroge using the unique content key "cachedID".
 
 ##Steps / Algorithm
 
-1. Client request a page, which has a main html page and other assets like css, js img etc.
+1. Client requests a page, which has a main html page and other assets like css, js img etc.
 2. Server gets the request, check for "cid" set in cookies, else set cid =>0 and
 3. cacheID="<some unique id for that content>", add and flush the contents.
 3. Client get the response, lookup for all tags with attr "cid". Iterate and check if "cid" is set to "0" or "1"
