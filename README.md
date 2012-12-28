@@ -20,7 +20,7 @@ in the localstroge using the unique content key "cachedID".
 
 1. Client requests a page, which has a main html page and other assets like css, js img etc.
 2. Server gets the request, check for "cid" in cookies, else set cid => 0 and
-   "cacheID" ="<some unique id for that content>", then add and flush the contents.
+   "cacheID" = "some unique id for that content", then add and flush the contents.
 3. Client get the response, lookup for all tags with attr "cid". Iterate and check if "cid" is set to "0" or "1"
     a. If "cid" is "0", read the "cacheID" and the content which is the html() date, store content in the localstorge usig key cacheID.
     b. If "cid" is "1", read the "ccaheID" and load the content from localstoreg.
