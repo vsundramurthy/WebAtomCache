@@ -4,7 +4,8 @@ WebAtomCache
 In my quick research more than a 60% of contents on a dynamic file is always static,
 the content includes html tags and the static data. One way to avoid this duplicated
 effort of retrieving markup is by using client side templates and load only json from server.
-For the you have rewrite yoor frontend a bit, but how can we achive the same with out rewrite?
+For that to happenm, you need rewrite your frontend a bit or more.
+Now how can we achive the same with out the rewrites?
 The idea is to use HTML5 localstorage for caching all the atomic contents from a dynamic page.
 Cache invalidation is done using the unique cache id sent from server.
 At the 1st time, the "cid" will be sent from server to client embeded in 
