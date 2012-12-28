@@ -19,7 +19,7 @@ The "cid" value "1" indicates that the content was already sent to the client, s
 2. Server gets the request, checks for "cid" in cookies, if not found, set cid => 0 and
    "cacheID" => "some unique id for that content", finally, add and flush the contents.
 3. Client gets the response, looks up for all tags with attr "cid". Iterate and check if "cid" is set to "0" or "1"
-    (a.) If "cid" is "0", read the "cacheID" and the content which is the html() date, store content in the local storage using key “cacheID”.
+    (a.) If "cid" is "0", read the "cacheID" and the content which is the html() data, store the content in the local storage using key “cacheID”.
     (b.) If "cid" is "1", read the "cacheID" and load the content from local storage. 
 4. If Server gets another call for the same page from same client.
    a. Check if "cid" is in the cookie, if present set "cid" to "1" and return simple the empty tag.
