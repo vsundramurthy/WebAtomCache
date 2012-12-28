@@ -27,11 +27,15 @@ The "cid" value "1" indicates that the content was already sent to the client, s
 6. Client side invalidation: Set a cookie expire date while storing content in client local storage.
 
 ##Result
-This approach will help reduce the date receiving time of a page.
-The waiting time will not improve, since server side operation will happen as before.
-In my experiment 23ms for waiting and 280ms for receiving at 1st round trip.
-After cache was applied, from the 2nd round trip onwards it was 23ms for waiting and 20ms receiving. More than a 82% of reduction is receiving time (Might vary from page to page). The waiting time will be always same because, we will do the backend verification for generate dynamic data as before, only the sending
-Part is determined using "cid", so you will not see much change in the waiting time.
+This approach will help reduce the date receiving time of a dynamic page.
+The waiting time will not improve b/c the server side operation will happen as before.
+In my experiment using the php script i wrote, it showed 23ms for waiting and 280ms for receiving in the first time page laod.
+After WebAtomCache was applied, the further requersts to the same dynamic file showed 23ms for waiting and 20ms receiving.
+More than 82% reduction is receiving time (This might vary for page to page).
+As i said before, the waiting time will be more or less same because,
+we will do routine backend verification for generating our dynamic content, only the sending
+part is determined using "cid", so you will not see much change in the waiting time. Let me know if you like to
+contribute or use this solution.
 
 ##LICENSE
 This software is licensed under the Apache 2 license, quoted below.
