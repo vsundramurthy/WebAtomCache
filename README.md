@@ -24,6 +24,14 @@ in the localstroge using the unique content key "cachedID".
 5. Client get the respose, if "cid" is "1" go to step 3.b else go to step 3.a
 6. Client side invalidation: Set a cookie expire date while storing content in client localstorage.
 
+##Result
+This approach will help reduce the date receiving time of a page.
+The waiting time will not improve, since server side operation will happen as before.
+In my experiment 23ms for waiting and 280ms for receiving at 1st round trip.
+After cache was applied, from the 2nd roundtrip onwards it was 23ms for waiting and 20ms receiving.
+More than a 82% of reduction is receiving time. The waiting time will be always same
+because, we will do the backend verification for generate dynamic data as before, only the sending
+part is determined using "cid", so you will not see much change in the waiting time.
 
 ##LICENSE
 This software is licensed under the Apache 2 license, quoted below.
