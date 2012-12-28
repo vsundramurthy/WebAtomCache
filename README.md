@@ -1,8 +1,9 @@
 WebAtomCache
 ============
 
-The idea is to use localstorage to cache all the atomic dynamic page contents. Cache invalidation is done
-usind cache id sent from server. At 1st time the CID will be sent from server to client embeded in 
+The idea is to use the HTML5 localstorage for caching all the atomic contents from a dynamic page.
+Cache invalidation is done usind cache id sent from server.
+At 1st time the CID will be sent from server to client embeded in 
 html tag attributes cide="0", 0 indicates the content inside this tag was never cached and should
 never loaded from localstorage. CID value "1" indicates the content was already sent and it is
 valid, so load it from the local storage. When cid was "0" client should store the atomic contents 
