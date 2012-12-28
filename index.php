@@ -1,5 +1,5 @@
 <?php
-LICENSE = <<<TAG
+$LICENSE = <<<TAG
 This software is licensed under the Apache 2 license, quoted below.
 
 
