@@ -43,7 +43,7 @@ for ($i= 0; $i < 2; $i++) {
 echo '<div cid="110" cache="' . cacheState("110") . '" class="footer">' .getDateString("110") . '</div>';
 
 echo <<<TAG
-<script src="/static/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js" type="text/javascript"></script>
 <script>
   function setCookie(c_name, value, minutes) {
     var date = new Date();
