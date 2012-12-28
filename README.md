@@ -2,45 +2,32 @@ WebAtomCache
 ============
 
 ##Problem
-In my quick research, more than 60% of contents from a dynamic file is always static.
-The content includes html tags and the static data. One way to avoid this duplicated
-effort of retrieving markup + data, is using the client side templates and loading data thru json.
-For this approach, we need to rewrite our frontend code a lot.
-Now how can we achive the same without dosing much of rewrites and just optimizing the existing code?
+In my quick research, more than 60% of contents from dynamic files are always static. The content includes html tags and the static data in it. One way to avoid this duplicated effort of retrieving markup + data, is by using client side templates, loading data thru JSON call. For this approach, we might have to rewrite our frontend code a lot. Now the question is, how can we achieve this without doing the frontend rewrites and just by optimizing the existing code?
 
 ##Solution
-The idea is to use HTML5 localstorage for caching all the atomic contents from a dynamic page.
-Cache invalidation is done using the unique cache id sent from server.
-At the 1st time, the "cid" will be sent from server to client embeded in 
-html tag's attributes cid="0", "0" indicates the content inside this tag was never cached befor
-in client side and should never loaded from localstorage.
-"cid" value "1" indicates the content was already sent and it is
-valid, so load it from the local storage. When cid was "0" client should store the atomic content
-in the localstroge using the unique content key "cachedID".
-"cacheID" is an attribute set on cacheable div or any other elements.
+The idea here is to use HTML5 local storage for caching all the atomic contents of a dynamic page. The cache invalidation is done using the unique cache id sent from the server. At 1st time, the "cid" will be sent from server to client embedded in 
+Html tag attributes “cid” ="0", "0" indicates the content inside this tag was never cached before in the client side and should never load from the local storage.
+The "cid" value "1" indicates that the content was already sent to the client, so load it from the local storage. When the “cid” was "0" client actually will store the atomic content in local storage using the unique content key "cachedID". The "cacheID" is an attribute set on cacheable div or any other elements.
 
 ##Steps / Algorithm
 
-1. Client requests a page, which has a main html page and other assets like css, js img etc.
-2. Server gets the request, check for "cid" in cookies, else set cid => 0 and
-   "cacheID" = "some unique id for that content", then add and flush the contents.
-3. Client get the response, lookup for all tags with attr "cid". Iterate and check if "cid" is set to "0" or "1"
-    (a.) If "cid" is "0", read the "cacheID" and the content which is the html() date, store content in the localstorge usig key cacheID.
-    (b.) If "cid" is "1", read the "ccaheID" and load the content from localstoreg. 
-4. If Server get another call for the same page from same client.
+1. Client requests a page, which has a main html page (the dynamic page) and other assets like css, js image etc.
+2. Server gets the request, checks for "cid" in cookies, if not found, set cid => 0 and
+   "cacheID" => "some unique id for that content", finally, add and flush the contents.
+3. Client gets the response, looks up for all tags with attr "cid". Iterate and check if "cid" is set to "0" or "1"
+    (a.) If "cid" is "0", read the "cacheID" and the content which is the html() date, store content in the local storage using key “cacheID”.
+    (b.) If "cid" is "1", read the "cacheID" and load the content from local storage. 
+4. If Server gets another call for the same page from same client.
    a. Check if "cid" is in the cookie, if present set "cid" to "1" and return simple the empty tag.
-5. Client get the respose, if "cid" is "1" go to step 3.b else go to step 3.a
-6. Client side invalidation: Set a cookie expire date while storing content in client localstorage.
+5. Client get the response, if "cid" is "1" go to step 3.b else go to step 3.a
+6. Client side invalidation: Set a cookie expire date while storing content in client local storage.
 
 ##Result
 This approach will help reduce the date receiving time of a page.
 The waiting time will not improve, since server side operation will happen as before.
 In my experiment 23ms for waiting and 280ms for receiving at 1st round trip.
-After cache was applied, from the 2nd roundtrip onwards it was 23ms for waiting and 20ms receiving.
-More than a 82% of reduction is receiving time (Might vary from page to page).
-The waiting time will be always same
-because, we will do the backend verification for generate dynamic data as before, only the sending
-part is determined using "cid", so you will not see much change in the waiting time.
+After cache was applied, from the 2nd round trip onwards it was 23ms for waiting and 20ms receiving. More than a 82% of reduction is receiving time (Might vary from page to page). The waiting time will be always same because, we will do the backend verification for generate dynamic data as before, only the sending
+Part is determined using "cid", so you will not see much change in the waiting time.
 
 ##LICENSE
 This software is licensed under the Apache 2 license, quoted below.
