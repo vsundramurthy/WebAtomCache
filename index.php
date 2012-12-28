@@ -1,59 +1,6 @@
 <?php
 echo print_r($_COOKIE);
 
-$_WEBSITE_STORY = <<<TAG
-<h1>Free Website Traffic Analysis (Website Score / Report Card)</h1>
-<div class="story-intro-container">
-  <span class="story-intro">
-    <span class="start-start">Welcome</span> to FreeWebsiteReport.org! A free and useful place for website owners,
-     website sellers, website buyers and website users. We offer free website worth estimation based on website traffic,
-     detailed website information and website statistics useful for selling or buying websites.
-     If you are not into selling or buying business, you can use our free service to asses user safety and the service quality of any website in this World.
- </span>
-</div>
-
-<div class="more-story-style" id="more-story" style="display:visible;">
-
-<div class="story-seller-container">
-  <div class="story-img-1 middle_banner_1"></div>
-  <div class="story-heading"><h2>Website Value Calculator</h2></div>
-  <div class="story-seller">
-      <span class="start-start">If</span> you are a website owner who is planning to sell your website,
-      you can use our website value calculator tool to estimate the approximate
-      website worth for listing your website on sale. The estimation is done based on the actual internet traffic
-      that your website receives. Get your free website worth Now! Type any website name in the search box and get
-      started.
-   </div>
- </div>
-
- <div class="story-buyer-container">
-  <div class="story-img-2 middle_banner_2"></div>
-   <div class="story-heading"><h2>Website worth Evaluator</h2></div>
-   <div class="story-buyer">
-     <span class="start-start">If</span> you are a new website buyer you can use our website worth evaluator tool to
-     identify the website base line value which is estimated using the website's
-     visitor traffic data, search engine ranking, social popularity, content
-     rating,  and website authority and authenticity. Checkout the estimations
-     Now! Type the website name in search box and get started.
-  </div>
- </div>
-
- <div class="story-user-container">
- <div class="story-img-3 middle_banner_3"></div>
- <div>
-  <div class="story-heading"><h2>Website User</h2></div>
-<div class="story-user">
-   <span class="start-start">If</span> you are a website user who usually visits multiple websites for services
-   like personal, social and entertainment, you can verify the site before visiting. We provide safty
-   check feature to verify site against Virus, Malicious Worms, Adwares, Trojans, Spywares and Suspicious Phishing Attacks.
-   Check sites for adult contents, BBB ratings for scams and customer complaints.
-  </div>
- </div>
- </div>
-<div class="clr"></div>
-</div>
-TAG;
-
 function getDateString($cid) {
   $date = new DateTime();
   if (!hasCookieSet($cid)) {
