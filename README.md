@@ -22,7 +22,7 @@ The "cid" value "1" indicates that the content was already sent to the client, s
     (a.) If "cid" is "0", read the "cacheID" and the content which is the html() data, store the content in the local storage using key “cacheID”.
     (b.) If "cid" is "1", read the "cacheID" and load the content from local storage. 
 4. If Server gets another call for the same page from same client.
-   a. Check if "cid" is in the cookie, if present set "cid" to "1" and return simple the empty tag.
+   a. Check if "cid" is in the cookie, if found, set "cid" to "1" and return simple the empty tag.
 5. Client get the response, if "cid" is "1" go to step 3.b else go to step 3.a
 6. Client side invalidation: Set a cookie expire date while storing content in client local storage.
 
