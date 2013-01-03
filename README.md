@@ -3,7 +3,7 @@ WebAtomCache
 
 ##Problem
 In my quick research, more than 60% of contents on a dynamic file is static for a period of time.
-The content includes html tags and the static data in it. One way to avoid this duplicated
+The content includes HTML tags and data. One way to avoid this duplicated
 effort of retrieving markup + data would be, using client side templates and loading data thru JSON call.
 For this approach, we might have to rewrite our frontend code a lot. Now the question is,
 how can we achieve this without doing the frontend rewrites and just by optimizing the existing code?
