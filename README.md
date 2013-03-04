@@ -33,7 +33,7 @@ In my experiment using the php script i wrote, it showed 23ms for waiting and 28
 After WebAtomCache was applied, the further requersts to the same dynamic file showed 23ms for waiting and 20ms receiving.
 More than 82% reduction is receiving time (This might vary for page to page).
 As i said before, the waiting time will be more or less same because,
-we will do routine backend verification for generating our dynamic content, only the sending
+we will do routine backend verification for generating our dynamic content and invalidationg the caches, so only the sending
 part is determined using "cid", so you will not see much change in the waiting time. Let me know if you like to
 contribute or use this solution.
 
