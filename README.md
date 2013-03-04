@@ -29,7 +29,7 @@ The "CID" value "1" indicates that the content was already sent to the client, s
 ##Result
 This approach will help reduce the date receiving time of a dynamic page.
 The waiting time will not improve b/c the server side operation will happen as before.
-In my experiment using the php script i wrote, it showed 23ms for waiting and 280ms for receiving in the first time page laod.
+In my experiment using the php script i wrote, it showed 23ms for waiting and 280ms for receiving in the first time page load.
 After WebAtomCache was applied, the further requersts to the same dynamic file showed 23ms for waiting and 20ms receiving.
 More than 82% reduction is receiving time (This might vary for page to page).
 As i said before, the waiting time will be more or less same because,
