@@ -4,26 +4,26 @@ WebAtomCache
 ##Problem
 In my latest research on frontend web performance side, more than a 60% of contents on a dynamic file is static for a period of time.
 The content includes HTML tags and data. One way to avoid this duplicated
-effort of retrieving markup + data for every page refresh would be using client side templates and loading data thru JSON call.
+effort of retrieving markup + data for every page refresh would be using client side templates and loading data through JSON calls.
 For this approach, we might have to rewrite our frontend code a lot, also this will only eliminate the markup part and data bindings 
 part still needs to happen at client side. Now the question is, how can we achieve this without doing the frontend rewrites and just by optimizing the existing code?
 
 ##Solution
-The idea here is to use HTML5 local storage for caching all the atomic contents of a dynamic page. The cache invalidation is done using the unique cache id sent from the server. At 1st time, the "cid" will be sent from server to client embedded in 
-Html tag attributes “cid” ="0", "0" indicates the content inside this tag was never cached before in the client side and should never load from the local storage.
-The "cid" value "1" indicates that the content was already sent to the client, so load it from the local storage. When the “cid” was "0" client actually will store the atomic content in local storage using the unique content key "cachedID". The "cacheID" is an attribute set on cacheable div or any other elements.
+The idea here is to use HTML5 local storage for caching all the atomic contents of a dynamic page. The cache invalidation is done using the unique cache id sent from the server. At 1st time, the "CID" will be sent from server to client embedded in 
+HTML tag attribute “CID” ="0", "0" indicates the content inside this tag was never cached before in the client side and should never load from the local storage.
+The "CID" value "1" indicates that the content was already sent to the client, so load it from the local storage. When the “CID” was "0" client actually will store the atomic content in local storage using the unique content key "cachedID". The "cacheID" is an attribute set on cacheable div or any other elements.
 
 ##Steps / Algorithm
 
 1. Client requests a page, which has a main html page (the dynamic page) and other assets like css, js image etc.
-2. Server gets the request, checks for "cid" in cookies, if not found, set cid => 0 and
+2. Server gets the request, checks for "CID" in cookies, if not found, set CID => 0 and
    "cacheID" => "some unique id for that content", finally, add and flush the contents.
-3. Client gets the response, looks up for all tags with attr "cid". Iterate and check if "cid" is set to "0" or "1"
-    (a.) If "cid" is "0", read the "cacheID" and the content which is the html() data, store the content in the local storage using key “cacheID”.
-    (b.) If "cid" is "1", read the "cacheID" and load the content from local storage. 
+3. Client gets the response, looks up for all tags with attr "CID". Iterate and check if "CID" is set to "0" or "1"
+    (a.) If "CID" is "0", read the "cacheID" and the content which is the html() data, store the content in the local storage using key “cacheID”.
+    (b.) If "CID" is "1", read the "cacheID" and load the content from local storage. 
 4. If Server gets another call for the same page from same client.
-   a. Check if "cid" is in the cookie, if found, set "cid" to "1" and return simple the empty tag.
-5. Client get the response, if "cid" is "1" go to step 3.b else go to step 3.a
+   a. Check if "CID" is in the cookie, if found, set "CID" to "1" and return simple the empty tag.
+5. Client get the response, if "CID" is "1" go to step 3.b else go to step 3.a
 6. Client side invalidation: Set a cookie expire date while storing content in client local storage.
 
 ##Result
