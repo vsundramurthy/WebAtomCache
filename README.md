@@ -2,7 +2,7 @@ WebAtomCache
 ============
 
 ##Problem
-In my latest research in frontend web performance, more than a 60% of contents on a dynamic file is static for a period of time.
+In my latest research on frontend web performance side, more than a 60% of contents on a dynamic file is static for a period of time.
 The content includes HTML tags and data. One way to avoid this duplicated
 effort of retrieving markup + data for every page refresh would be using client side templates and loading data thru JSON call.
 For this approach, we might have to rewrite our frontend code a lot, also this will only eliminate the markup part and data bindings 
