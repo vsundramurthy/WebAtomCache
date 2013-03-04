@@ -13,7 +13,7 @@ The idea here is to use HTML5 local storage for caching all the atomic contents 
 HTML tag attribute “CID” ="0", "0" indicates the content inside this tag was never cached before in the client side and should never load from the local storage.
 The "CID" value "1" indicates that the content was already sent to the client, so load it from the local storage.
 Also at any point of time if the server decides to invalidate the cache, it can simple set the CID to 0 and  the client
-will igone the local cache and load it from the server, push the same atomic cache to the local storage.
+will igone the local cache and load it from the server, push the same atomic cache to the local storage as well.
 
 ##Steps / Algorithm
 
