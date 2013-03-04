@@ -12,7 +12,8 @@ part still needs to happen at client side. Now the question is, how can we achie
 The idea here is to use HTML5 local storage for caching all the atomic contents of a dynamic page. The cache invalidation is done using the unique cache id sent from the server. At 1st time, the "CID" will be sent from server to client embedded in 
 HTML tag attribute “CID” ="0", "0" indicates the content inside this tag was never cached before in the client side and should never load from the local storage.
 The "CID" value "1" indicates that the content was already sent to the client, so load it from the local storage.
-Also at any point of time if the server want to invalide the cache it can simple set the CID to 0, so the client will igone the cache load it from serever and also push it to the local storeg
+Also at any point of time if the server decides to invalidate the cache, it can simple set the CID to 0 and  the client
+will igone the local cache and load it from the server, push the same atomic cache to the local storage.
 
 ##Steps / Algorithm
 
